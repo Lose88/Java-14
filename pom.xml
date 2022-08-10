@@ -54,20 +54,7 @@
                         <id>check</id>
                         <goals>
                             <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <rule>
-                                    <limits>
-                                        <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>100%</minimum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                            </rules>
-                        </configuration>
+                        </goals>                       
                     </execution>
                 </executions>
             </plugin>
