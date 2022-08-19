@@ -14,6 +14,13 @@ public class Repository {
     }
 
     public void remove(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException(
+                    "Элемент с id: " + id + " не существует"
+            );
+
+
+        }
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
@@ -27,5 +34,14 @@ public class Repository {
 
     public Product[] findAll() {
         return products;
+    }
+
+    public Product findById(int id) {
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 }

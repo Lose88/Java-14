@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.*;
 
@@ -125,5 +126,31 @@ public class ManagerTest {
         Product[] actual = manager.searchBy("Xiaomi");
         Product[] expected = {};
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeIdOutOfMassive() {
+        manager.add(phone1);
+        manager.add(phone2);
+        manager.add(phone3);
+
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            manager.removeById(56);
+        });
+    }
+
+    @Test
+    public void removeByIdNew() {
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+        manager.removeById(2);
+        Product[] actual = manager.findAll();
+        Product[] expected = {book1, book3};
+
+
+        Assertions.assertArrayEquals(expected, actual);
+
     }
 }
